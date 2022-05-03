@@ -1,0 +1,33 @@
+\documentclass{../itmo-lab-report}
+
+\usepackage{subfiles}
+
+\serialnumber{1}
+\title{Системы линейных алгебраических уравнений: метод~простых~итераций}
+\studentname{Глазов А.С.}
+\studentgroup{P3232}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Описание метода и расчетные формулы}
+    \subfile{method.tex}
+    \newpage
+
+    \section{Блок-схема}
+    \subfile{flowchart.tex}
+    %\newpage
+
+    \section{Листинг численного метода}
+    \pythoncode[fontsize=\footnotesize]{src/method.py}
+    \newpage
+
+    \section{Примеры работы}
+    \subfile{examples.tex}
+    \newpage
+
+    \section{Вывод}
+    \subfile{review.tex}
+\end{document}

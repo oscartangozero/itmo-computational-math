@@ -1,0 +1,34 @@
+\documentclass[lab1-report.tex]{subfiles}
+
+\begin{document}
+    \begin{flushright}
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [terminal] {Начало};
+            \node (in) [io, below of=start] {
+                \(A \in \mathbb{R}^{n \times n},
+                \ b \in \mathbb{R}^{n},
+                \ x^{(0)} \in \mathbb{R}^{n},
+                \ max\ error \in \mathbb{R}\)};
+            \node (diagonal) [process, below of=in] {
+                \(D \in \mathbb{R}^{n \times n},
+                \ D = \{\delta_{ij} a_{ij}\}_{1 \,\le\, i, j \,\le\, n} \)};
+            \node (residue) [process, below of=diagonal] {
+                \(residue^{(k)} = D^{-1}(b - A x^{(k)})\)};
+            \node (condition) [decision, below of=residue, yshift=-0.5cm] {
+                \(residue^{(last)} \le max\ error\)};
+            \node (relaxation) [process, right=5cm, right of= condition] {
+                \(x^{(k+1)} = x^{(k)} + residue^{(k)}\)};
+            \node (out) [io, below of=condition, yshift=-0.5cm] {
+                \(x^{(last)},\ residue^{(last)}\)};
+            \node (end) [terminal, below of=out] {Конец};
+            \draw [arrow] (start) -- (in);
+            \draw [arrow] (in) -- (diagonal);
+            \draw [arrow] (diagonal) -- (residue);
+            \draw [arrow] (residue) -- (condition);
+            \draw [arrow] (condition) -- node[anchor=south] {нет} (relaxation);
+            \draw [arrow] (relaxation) |- (residue);
+            \draw [arrow] (condition) -- node[anchor=west] {да} (out);
+            \draw [arrow] (out) -- (end);
+        \end{tikzpicture}
+    \end{flushright}
+\end{document}
