@@ -2,16 +2,14 @@
 import subprocess
 import sys
 from collections.abc import Iterable
-
 import numpy as np
 
-ROOTS = sys.argv[1:]
-
-TARGET = 'examples.tex'
+TARGET = sys.argv[1]
+ROOTS = sys.argv[2:]
 
 EXAMPLES_WIDTH = 0.9
 EXAMPLES_TEMPLATE = r'''
-\documentclass[lab1-report.tex]{subfiles}
+\documentclass[report.tex]{subfiles}
 
 \begin{document}
     \begin{examples}{%.2f}{%.2f}{%.2f}
